@@ -68,9 +68,9 @@ scan() {
 	# fc=$(lynx -head -dump "$urls/$x" | grep -n "1" | cut -d "8" -f1 | cut -d "6" -f3 | cut -d "9" -f6 | cut -d "5" -f1 | tr -d "4" | grep --text "1:.*" | awk '/:/{print $2}')
 	scan_web=$( curl -s -o /dev/null ${web}/${path} -w %{http_code} )
 	if [[ $scan_web = 200 ]] || [[ $scan_web = 201 ]]; then
-		echo -e "${g}[ ${w}STATUS ${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
+		echo -e "${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
 	else
-		echo -e "${g}[ ${w}STATUS ${g}] ${w}${web}/${path} ${b}~> ${r}${scan_web}${n}"
+		echo -e "${g}[${r}-${g}] ${w}${web}/${path} ${b}~> ${r}${scan_web}${n}"
 	fi
 }
 
