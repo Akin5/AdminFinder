@@ -21,7 +21,6 @@ rv='\e[7m'
 
 thread=1
 count=1
-jeda=1
 
 check(){
 	command -v tput > /dev/null 2>&1 ||
@@ -49,7 +48,7 @@ apt install grep > /dev/null 2>&1 ||
 	}
 }
 
-banner(){
+banner() {
 	printf "\n"
 	echo -e "${g}[${w}+${g}]${b} ================================ ${g}[${w}+${g}]${n}"
 	echo -e "${g}[${w}+${g}]${w}            ${r}Admin ${w}Finder          ${g}[${w}+${g}]${n}"
@@ -63,9 +62,8 @@ banner(){
 }
 
 scan() {
-	web=$( echo ${1} | cut -d '/' -f 3 )
+	web=${1}
 	path="${2}"
-	# fc=$(lynx -head -dump "$urls/$x" | grep -n "1" | cut -d "8" -f1 | cut -d "6" -f3 | cut -d "9" -f6 | cut -d "5" -f1 | tr -d "4" | grep --text "1:.*" | awk '/:/{print $2}')
 	scan_web=$( curl -s -o /dev/null ${web}/${path} -w %{http_code} )
 	if [[ $scan_web = 200 ]] || [[ $scan_web = 201 ]]; then
 		echo -e "${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
@@ -89,9 +87,10 @@ if ! [[ -e $wordlist ]]; then
 	echo -e "${b}[${r}!${b}]${w} List not found !!"
 	exit
 fi
+web=$( echo ${web} | cut -d '/' -f 3 )
 for list in $( cat $wordlist ); do
 	if [[ $(( $thread % $count )) = 0 && $count > 0 ]]; then
-		sleep $jeda
+		sleep 1
 	fi
 	scan "${web}" "${list}" &
 	(( count++ ))
