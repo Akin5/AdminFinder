@@ -81,13 +81,15 @@ read web
 echo -ne "${c}[${w}?${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
 read wordlist
 printf "\n"
+web=$( echo ${web} | cut -d '/' -f 3 )
 wordlist=${wordlist:-wordlist.txt}
 if ! [[ -e $wordlist ]]; then
 	printf "\n"
 	echo -e "${b}[${r}!${b}]${w} List not found !!"
 	exit
 fi
-web=$( echo ${web} | cut -d '/' -f 3 )
+echo -e "${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
+printf "\n"
 for list in $( cat $wordlist ); do
 	if [[ $(( $thread % $count )) = 0 && $count > 0 ]]; then
 		sleep 1
