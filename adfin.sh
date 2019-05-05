@@ -41,7 +41,7 @@ check(){
 					}
 			}
 	}
-apt install grep > /dev/null 2>&1 ||
+	apt install grep > /dev/null 2>&1 ||
 	{
 		echo -e "Please check your connecting!";
 		exit
@@ -89,7 +89,12 @@ if ! [[ -e $wordlist ]]; then
 	exit
 fi
 echo -e "${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
-printf "\n"
+echo -ne "${g}[${w}+${g}]${w} Start Scanning...${n}"
+for (( TiTik = 1; TiTik <= 10; TiTik++ )); do
+	printf '.'
+	usleep 1000000
+done
+printf "\n\n"
 for list in $( cat $wordlist ); do
 	if [[ $(( $thread % $count )) = 0 && $count > 0 ]]; then
 		sleep 1
