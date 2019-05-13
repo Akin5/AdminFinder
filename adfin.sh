@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
-# Dfv47@Mfth'Daffa Gans
-# Black Coder Crush
+# set -euo pipefail
 
-# colors
+# Colors
 r='\e[91m'
 g='\e[92m'
 y='\e[93m'
@@ -19,6 +17,8 @@ it='\e[3m'
 ul='\e[4m'
 rv='\e[7m'
 
+colors=( "${bd}${r}" "${bd}${g}" "${bd}${y}" "${bd}${b}" "${bd}${p}" "${bd}${c}")
+
 thread=1
 count=1
 
@@ -31,7 +31,7 @@ check(){
 					exit;
 				}
 		}
-	command -v lynx > /dev/null 2>&1 ||
+	command -v curl > /dev/null 2>&1 ||
 		{
 			{
 				apt install lynx > /dev/null 2>&1 ||
@@ -41,7 +41,7 @@ check(){
 					}
 			}
 	}
-	apt install grep > /dev/null 2>&1 ||
+apt install grep > /dev/null 2>&1 ||
 	{
 		echo -e "Please check your connecting!";
 		exit
@@ -49,16 +49,19 @@ check(){
 }
 
 banner() {
-	printf "\n"
-	echo -e "${g}[${w}+${g}]${b} ================================ ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${w}            ${r}Admin ${w}Finder          ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${w}  Author ${g}:${w} Dfv47 ft 4K17          ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${w}  Code ${g}:${w} Bash                     ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${w}  Team ${g}:${w} Black coder crush        ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${w}                                  ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${c}  ${ul}All member black coder crush${n}    ${g}[${w}+${g}]${n}"
-	echo -e "${g}[${w}+${g}]${b} ================================ ${g}[${w}+${g}]${n}"
-	printf "\n"
+	rand1=$( shuf -i 0-${#colors[@]} -n 1 )
+	rand2=$( shuf -i 0-${#colors[@]} -n 1 )
+	echo -e "\t${colors[rand1]}  _____   _       _     ${colors[rand2]}   _____ _       _"${n}
+	echo -e "\t${colors[rand1]} |  _  |_| |_____|_|___ ${colors[rand2]}  |   __|_|___ _| |___ ___"${n}
+	echo -e "\t${colors[rand1]} |     | . |     | |   |${colors[rand2]}  |   __| |   | . | -_|  _|"${n}
+	echo -e "\t${colors[rand1]} |__|__|___|_|_|_|_|_|_|${colors[rand2]}  |__|  |_|_|_|___|___|_|"${n}
+	echo -e "\t${bd}${r}--------------------------------------------------${n}"
+	echo -e "\t${bd}${g}|${w}       Author  ${b}:${c} ${ul}4K17${n}                           ${g}|${n}"
+	echo -e "\t${bd}${g}|${w}       Code    ${b}:${w} Bash                           ${g}|${n}"
+	echo -e "\t${bd}${g}|${w}       Team    ${b}:${w} IndoSec, Black coder crush     ${g}|${n}"
+	echo -e "\t${bd}${g}|${w}       Date    ${b}:${w} 13 - 5 - 2019                  ${g}|${n}"
+	echo -e "\t${bd}${g}|${w}       Version ${b}:${w} 1.0                            ${g}|${n}"
+	echo -e "\t${bd}${r}--------------------------------------------------${n}"
 }
 
 scan() {
@@ -78,20 +81,20 @@ scan() {
 clear
 check
 banner
-echo -ne "${c}[${w}?${c}] ${w}Enter your website ${g}:${n} "
+echo -ne "\t${c}[${w}?${c}] ${w}Enter your website ${g}:${n} "
 read web
-echo -ne "${c}[${w}?${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
+echo -ne "\t${c}[${w}?${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
 read wordlist
 printf "\n"
 web=$( echo ${web} | cut -d '/' -f 3 )
 wordlist=${wordlist:-wordlist.txt}
 if ! [[ -e $wordlist ]]; then
 	printf "\n"
-	echo -e "${b}[${r}!${b}]${w} List not found !!"
+	echo -e "\t${b}[${r}!${b}]${w} List not found !!"
 	exit
 fi
-echo -e "${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
-echo -ne "${g}[${w}+${g}]${w} Start Scanning${n}"
+echo -e "\t${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
+echo -ne "\t${g}[${w}+${g}]${w} Start Scanning${n}"
 for (( TiTik = 1; TiTik <= 10; TiTik++ )); do
 	printf '.'
 	usleep 1000000
