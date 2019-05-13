@@ -66,7 +66,9 @@ scan() {
 	path="${2}"
 	scan_web=$( curl -s -o /dev/null ${web}/${path} -w %{http_code} )
 	if [[ $scan_web = 200 ]] || [[ $scan_web = 201 ]]; then
+		printf "\n"
 		echo -e "${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
+		printf "\n"
 	else
 		echo -e "${g}[${r}-${g}] ${w}${web}/${path} ${b}~> ${r}${scan_web}${n}"
 	fi
@@ -89,7 +91,7 @@ if ! [[ -e $wordlist ]]; then
 	exit
 fi
 echo -e "${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
-echo -ne "${g}[${w}+${g}]${w} Start Scanning...${n}"
+echo -ne "${g}[${w}+${g}]${w} Start Scanning${n}"
 for (( TiTik = 1; TiTik <= 10; TiTik++ )); do
 	printf '.'
 	usleep 1000000
