@@ -70,10 +70,10 @@ scan() {
 	scan_web=$( curl -s -o /dev/null ${web}/${path} -w %{http_code} )
 	if [[ $scan_web = 200 ]] || [[ $scan_web = 201 ]]; then
 		printf "\n"
-		echo -e "${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
+		echo -e "\t${b}[   ${rv}${g}FOUND${n}${b}   ] ${rv}${w}${web}/${path}${n} ${y}~> ${bd}${g}${scan_web}${n}"
 		printf "\n"
 	else
-		echo -e "${g}[${r}-${g}] ${w}${web}/${path} ${b}~> ${r}${scan_web}${n}"
+		echo -e "\t${b}[ ${rv}${r}NOT FOUND${n}${b} ] ${rv}${w}${web}/${path}${n} ${b}~> ${bd}${r}${scan_web}${n}"
 	fi
 }
 
