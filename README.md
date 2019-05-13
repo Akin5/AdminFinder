@@ -2,12 +2,10 @@
 <h1>Admin Finder</h1>
 <hr>
 <h3>Cara Install ini tools<h3>
-<p>
-	$ apt update
-	$ apt upgrade
-	$ pkg install curl 
-	$ pkg install git
-	$ git clone https://github.com/Akin5/AdminFinder.git
-	$ cd AdminFinder
-	$ bash adfin.sh
-</p>
+<code>$ apt update</code>
+<code>$ apt upgrade</code>
+<code>$ pkg install curl </code>
+<code>$ pkg install git</code>
+<code>$ git clone https://github.com/Akin5/AdminFinder.git</code>
+<code>$ cd AdminFinder</code>
+<code>$ bash adfin.sh</code>
