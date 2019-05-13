@@ -1,7 +1,6 @@
 
-<h1>Admin Finder</h1>
-<hr>
-<h3>Cara Install ini tools<h3>
+*Admin Finder*
+*Cara Install ini tools*
 ```
 $ apt update
 $ apt upgrade
