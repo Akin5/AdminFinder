@@ -83,6 +83,11 @@ check
 banner
 echo -ne "\t${c}[${w}?${c}] ${w}Enter your website ${g}:${n} "
 read web
+if [[ -z $web ]]; then
+	printf "\n"
+	echo -e "\t${b}[${r}!${b}]${w} Website tidak boleh kosong!!"
+	exit
+fi
 echo -ne "\t${c}[${w}?${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
 read wordlist
 printf "\n"
@@ -97,7 +102,7 @@ echo -e "\t${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut
 echo -ne "\t${g}[${w}+${g}]${w} Start Scanning${n}"
 for (( TiTik = 1; TiTik <= 10; TiTik++ )); do
 	printf '.'
-	usleep 1000000
+	usleep 10000
 done
 printf "\n\n"
 for list in $( cat $wordlist ); do
