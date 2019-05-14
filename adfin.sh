@@ -80,6 +80,11 @@ check
 banner
 echo -ne "${c}[${w}?${c}] ${w}Enter your website ${g}:${n} "
 read web
+if [[ -z $web ]]; then
+    printf "\n"
+    echo -e "${b}[${r}!${b}]${w} Website tidak boleh kosong !!"
+    exit
+fi
 echo -ne "${c}[${w}?${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
 read wordlist
 printf "\n"
