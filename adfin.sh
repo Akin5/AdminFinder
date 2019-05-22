@@ -34,16 +34,11 @@ check(){
     command -v curl > /dev/null 2>&1 ||
     {
         
-        apt install lynx > /dev/null 2>&1 ||
+        apt install curl > /dev/null 2>&1 ||
         {
             echo -e "Please check your connecting!";
             exit;
         }
-    }
-    apt install grep > /dev/null 2>&1 ||
-    {
-        echo -e "Please check your connecting!";
-        exit
     }
 }
 
