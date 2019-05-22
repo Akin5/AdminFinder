@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Dfv47@Mfth'Daffa Gans
 # Black Coder Crush
 
 # colors
@@ -25,7 +24,7 @@ count=1
 check(){
     command -v tput > /dev/null 2>&1 ||
     {
-        apt install ncurees-util ||
+        apt install ncurses-util > /dev/null 2>&1 ||
         {
             echo -e "Please check your connecting!";
             exit;
@@ -33,12 +32,10 @@ check(){
     }
     command -v lynx > /dev/null 2>&1 ||
     {
+        apt install lynx > /dev/null 2>&1 ||
         {
-            apt install lynx > /dev/null 2>&1 ||
-            {
-                echo -e "Please check your connecting!";
-                exit;
-            }
+            echo -e "Please check your connecting!";
+            exit;
         }
     }
     apt install grep > /dev/null 2>&1 ||
