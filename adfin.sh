@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-<<<<<<< HEAD
-set -euo pipefail
-# Black Coder Crush
-=======
-# set -euo pipefail
->>>>>>> 82ab01dae561a05cde46b8c72d9c1bb7e43baa01
+
 
 # Colors
 r='\e[91m'
@@ -28,44 +23,44 @@ thread=1
 count=1
 
 check(){
-	command -v tput > /dev/null 2>&1 ||
-		{
-			apt install ncurses-util ||
-				{
-					echo -e "Please check your connecting!";
-					exit;
-				}
-		}
-	command -v curl > /dev/null 2>&1 ||
-		{
-
-			apt install lynx > /dev/null 2>&1 ||
-				{
-					echo -e "Please check your connecting!";
-					exit;
-				}
-	}
-	apt install grep > /dev/null 2>&1 ||
-	{
-		echo -e "Please check your connecting!";
-		exit
-	}
+    command -v tput > /dev/null 2>&1 ||
+    {
+        apt install ncurses-util ||
+        {
+            echo -e "Please check your connecting!";
+            exit;
+        }
+    }
+    command -v curl > /dev/null 2>&1 ||
+    {
+        
+        apt install lynx > /dev/null 2>&1 ||
+        {
+            echo -e "Please check your connecting!";
+            exit;
+        }
+    }
+    apt install grep > /dev/null 2>&1 ||
+    {
+        echo -e "Please check your connecting!";
+        exit
+    }
 }
 
 banner() {
-	rand1=$( shuf -i 0-${#colors[@]} -n 1 )
-	rand2=$( shuf -i 0-${#colors[@]} -n 1 )
-	echo -e "\t${colors[rand1]}  _____   _       _     ${colors[rand2]}   _____ _       _"${n}
-	echo -e "\t${colors[rand1]} |  _  |_| |_____|_|___ ${colors[rand2]}  |   __|_|___ _| |___ ___"${n}
-	echo -e "\t${colors[rand1]} |     | . |     | |   |${colors[rand2]}  |   __| |   | . | -_|  _|"${n}
-	echo -e "\t${colors[rand1]} |__|__|___|_|_|_|_|_|_|${colors[rand2]}  |__|  |_|_|_|___|___|_|"${n}
-	echo -e "\t${bd}${r}--------------------------------------------------${n}"
-	echo -e "\t${bd}${g}|${w}       Author  ${b}:${c} ${ul}4K17${n}                           ${g}|${n}"
-	echo -e "\t${bd}${g}|${w}       Code    ${b}:${w} Bash                           ${g}|${n}"
-	echo -e "\t${bd}${g}|${w}       Team    ${b}:${w} IndoSec, Black coder crush     ${g}|${n}"
-	echo -e "\t${bd}${g}|${w}       Date    ${b}:${w} 13 - 5 - 2019                  ${g}|${n}"
-	echo -e "\t${bd}${g}|${w}       Version ${b}:${w} 1.0                            ${g}|${n}"
-	echo -e "\t${bd}${r}--------------------------------------------------${n}"
+    rand1=$( shuf -i 0-${#colors[@]} -n 1 )
+    rand2=$( shuf -i 0-${#colors[@]} -n 1 )
+    echo -e "\t${colors[rand1]}  _____   _       _     ${colors[rand2]}   _____ _       _"${n}
+    echo -e "\t${colors[rand1]} |  _  |_| |_____|_|___ ${colors[rand2]}  |   __|_|___ _| |___ ___"${n}
+    echo -e "\t${colors[rand1]} |     | . |     | |   |${colors[rand2]}  |   __| |   | . | -_|  _|"${n}
+    echo -e "\t${colors[rand1]} |__|__|___|_|_|_|_|_|_|${colors[rand2]}  |__|  |_|_|_|___|___|_|"${n}
+    echo -e "\t${bd}${r}--------------------------------------------------${n}"
+    echo -e "\t${bd}${g}|${w}       Author  ${b}:${c} ${ul}4K17${n}                           ${g}|${n}"
+    echo -e "\t${bd}${g}|${w}       Code    ${b}:${w} Bash                           ${g}|${n}"
+    echo -e "\t${bd}${g}|${w}       Team    ${b}:${w} IndoSec, Black coder crush     ${g}|${n}"
+    echo -e "\t${bd}${g}|${w}       Date    ${b}:${w} 13 - 5 - 2019                  ${g}|${n}"
+    echo -e "\t${bd}${g}|${w}       Version ${b}:${w} 1.0                            ${g}|${n}"
+    echo -e "\t${bd}${r}--------------------------------------------------${n}"
 }
 
 scan() {
@@ -88,7 +83,7 @@ banner
 echo -ne "\t${c}[${w}?${c}] ${w}Enter your website ${g}:${n} "
 read web
 if [[ -z $web ]]; then
-
+    
     printf "\n"
     echo -e "${b}[${r}!${b}]${w} Website tidak boleh kosong !!"
     exit
