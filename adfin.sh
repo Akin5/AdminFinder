@@ -87,6 +87,7 @@ scan() {
 	if [[ $scan_web == 200 ]] || [[ $scan_web == 201 ]]; then
 		printf "\n"
 		echo -e "\t${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}"
+                echo -e "\t${g}[${w}+${g}] ${w}${web}/${path} ${y}~> ${g}${scan_web}${n}" >> ./result.log
 		printf "\n"
 	else
 		echo -e "\t${g}[${r}-${g}] ${w}${web}/${path} ${b}~> ${r}${scan_web}${n}"
@@ -129,5 +130,14 @@ for list in $( < $wordlist ); do
 	(( count++ ))
 done
 wait
-
+clear
+if [[ -f ./result.log ]]
+then
+cat ./result.log
+rm -f ./result.log
+else
+        tput cup 27 27
+        echo -e " \e[31;4m Данных нет !!! \e[0m"
+        tput cnorm
+fi
 # akin gans
